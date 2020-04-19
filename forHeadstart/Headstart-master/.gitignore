@@ -1,0 +1,13 @@
+server/preprocessing/other-scripts/.Rhistory
+/nbproject/private/
+/server/nbproject/private/
+*_local.*
+vis/images/*.pdf
+node_modules/
+npm-debug.log
+**/.sass-cache/*
+vis/stylesheets/*.css
+*.map
+dist/
+.idea/
+config.js

@@ -1,0 +1,67 @@
+---
+title: "Open Knowledge Maps R Codes"
+description: |
+  Codes Used Open Knowledge Maps  
+  Data Report for Open Knowledge Maps
+author:
+  - name: Serdar Balci, MD, Pathologist
+    url: 
+    affiliation: serdarbalci.com
+    affiliation_url: https://www.serdarbalci.com/
+  - name: Open Knowledge Maps Headstart
+    url: https://github.com/OpenKnowledgeMaps/Headstart
+    affiliation: Open Knowledge Maps
+    affiliation_url: https://openknowledgemaps.org/
+date: "`r Sys.Date()`"
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+output: 
+  pdf_document: 
+    fig_caption: yes
+    highlight: kate
+    number_sections: yes
+    toc: yes
+    latex_engine: lualatex
+    toc_depth: 5
+    keep_tex: yes
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+vignette: >
+  %\VignetteIndexEntry{Recommendations for Rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+
+```{r header, child = here::here('childRmd', '_header.Rmd')}
+```
+
+
+```{r header, child = here::here('childRmd', '_defineFunctions.Rmd')}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

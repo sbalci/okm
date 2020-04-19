@@ -1,0 +1,91 @@
+/* ########### Streamgraph ########### */
+
+.streamgraph-canvas {
+    padding: 20px 15px 10px 10px;
+    margin-left: 0px;
+}
+
+.stream {
+    opacity: 1;
+    cursor: pointer;
+    stroke-width: 0px;
+}
+
+.lower-opacity {
+    opacity: 0.3;
+    filter: grayscale(40%);
+    -webkit-filter: grayscale(40%);
+}
+
+.label {
+    cursor: pointer;
+}
+
+.label-background {
+    cursor: pointer;
+    fill: #fff;
+    fill-opacity: 1;
+}
+
+.label-background {
+    stroke: #dadada;
+    stroke-width: 1;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #3a403d;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: .625em;
+}
+
+.axis-label {
+    font-size: 12px;
+    /*stroke: #2856a3;*/
+    /*stroke-width:1;*/
+    color: #333;
+}
+
+.tip {
+    background-color: rgba(255,255,255,1);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    font-size: 1em;
+    width: 180px;
+    position: absolute;
+    z-index: 20;
+    visibility: visible;
+
+    .year {
+        font-weight: 900;
+        font-size: 1.25em;
+        margin-bottom: 2px;
+    }
+
+    .swatch {
+        width: 11px;
+        height: 11px;
+        float: left;
+        margin-top: 6px;
+        margin-right: 4px;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.line_helper {
+    position: absolute;
+    z-index: 19;
+    width: 1px;
+    background: #333;
+    top: 10px;
+    bottom: 30px;
+    left: 0px;
+}

@@ -1,0 +1,336 @@
+
+# PubMed
+
+
+thank you for your interest in using our software!
+In your case you will mainly want to focus on working with the R-backend. It requires installation of a range of R-packages, which are listed here https://github.com/OpenKnowledgeMaps/Headstart/blob/master/doc/server_config.md
+
+The scripts that execute our analytics workflow are located in "server/preprocessing/other-scripts/".
+For an example of how it works, please have a look at the pubmed-test.R script in the test folders. The main data structure that you want to manipulate if you want to work with larger datasets is input_data.
+You can change the search parameters (date range, document types) in params_pubmed.json, the search term with the "query" parameter, and especially remove the limit of 100 documents by changing "input_data = get_papers(query, params, limit=NNN)".
+
+After that, you should be able to create the output_json as usual - you may want to relax the MAX_CLUSTERS parameter as well.
+
+
+
+currently, our docker images are out-of-date. We are working on new versions of them, but in the meantime, I can propose another method.
+You can run a local example, with your own data by adapting the local_files example described in the README under the "Getting started" example https://github.com/OpenKnowledgeMaps/Headstart/blob/master/README.md
+
+1) Prepare and deploy the client, as described in https://github.com/OpenKnowledgeMaps/Headstart/blob/master/doc/README.md#deploying-the-client
+2) verify that the local_files example works as described
+3) You can then start working on your own examples by producing your own csv files to replace the example files - please compare the data and folder structure in the examples/local_files folder with your browser view to get a better understanding. You can create the CSV files as output from the R backend as described in last email.
+4) You then need to adapt the local_files/data-config.js to load your own CSVs
+5) After starting the local server you should be able to visualize your results
+
+
+
+the sequence of the getting input data and creating the map data can be found in the example of https://github.com/OpenKnowledgeMaps/Headstart/blob/master/server/preprocessing/other-scripts/test/pubmed-test.R
+if you refer to the  workflow of creating map data from input data, that specific workflow is in https://github.com/OpenKnowledgeMaps/Headstart/blob/master/server/preprocessing/other-scripts/vis_layout.R
+
+
+```{r}
+source("R/test/pubmed-test.R")
+
+```
+
+
+
+```{r}
+source("R/vis_layout.R")
+
+```
+
+
+
+
+
+
+
+```{r utils, include=FALSE}
+source(file = here::here("R/utils.R"))
+```
+
+
+
+```{r preprocess, include=FALSE}
+source(file = here::here("R", "preprocess.R"))
+```
+
+
+
+
+```{r features, include=FALSE}
+source(file = here::here("R", "features.R"))
+```
+
+
+
+```{r cluster, include=FALSE}
+source(file = here::here("R", "cluster.R"))
+```
+
+
+
+
+```{r summarize, include=FALSE}
+source(file = here::here("R", "summarize.R"))
+```
+
+
+
+
+
+```{r postprocess, include=FALSE}
+source(file = here::here("R", "postprocess.R"))
+```
+
+
+
+
+
+```{r vis_layout, include=FALSE}
+source(file = here::here("R", "vis_layout.R"))
+```
+
+
+
+
+
+```{r pubmed, include=FALSE}
+source(file = here::here("R", "pubmed.R"))
+```
+
+
+
+
+
+```{r pubmed-test, include=FALSE}
+source(file = here::here("R", "pubmed-test.R"))
+```
+
+
+---
+
+
+# base
+
+
+
+```{r base, include=FALSE}
+source(file = here::here("R", "base.R"))
+```
+
+
+
+
+```{r base-test-ger, include=FALSE}
+source(file = here::here("R", "base-test-ger.R"))
+```
+
+
+
+
+```{r base-test, include=FALSE}
+source(file = here::here("R", "base-test.R"))
+```
+
+
+
+
+---
+
+
+# altmetrics
+
+
+```{r altmetrics, include=FALSE}
+source(file = here::here("R", "altmetrics.R"))
+```
+
+---
+
+# doaj
+
+
+```{r doaj, include=FALSE}
+source(file = here::here("R", "doaj.R"))
+```
+
+
+
+
+```{r doaj-test, include=FALSE}
+source(file = here::here("R", "doaj-test.R"))
+```
+
+
+
+---
+
+# linked category
+
+
+```{r linkedcat, include=FALSE}
+source(file = here::here("R", "linkedcat.R"))
+```
+
+
+
+
+```{r linkedcat-test, include=FALSE}
+source(file = here::here("R", "linkedcat-test.R"))
+```
+
+
+
+## author view
+
+```{r linkedcat_authorview, include=FALSE}
+source(file = here::here("R", "linkedcat_authorview.R"))
+```
+
+
+
+
+```{r linkedcat_authorview-test, include=FALSE}
+source(file = here::here("R", "linkedcat_authorview-test.R"))
+```
+
+
+
+## browse view
+
+
+```{r linkedcat_browseview, include=FALSE}
+source(file = here::here("R", "linkedcat_browseview.R"))
+```
+
+
+```{r linkedcat_browseview-test, include=FALSE}
+source(file = here::here("R", "linkedcat_browseview-test.R"))
+```
+
+
+
+# openaire
+
+```{r openaire, include=FALSE}
+source(file = here::here("R", "openaire.R"))
+```
+
+
+```{r test-openaire, include=FALSE}
+source(file = here::here("R", "test-openaire.R"))
+```
+
+
+# rplos
+
+
+```{r rplos, include=FALSE}
+source(file = here::here("R", "rplos.R"))
+```
+
+
+
+```{r rplos_fast, include=FALSE}
+source(file = here::here("R", "rplos_fast.R"))
+```
+
+
+```{r rplos_fast-test, include=FALSE}
+source(file = here::here("R", "rplos_fast-test.R"))
+```
+
+
+
+# cluster
+
+```{r scaling_clustering, include=FALSE}
+source(file = here::here("R", "scaling_clustering.R"))
+```
+
+
+# streamgraph
+
+```{r streamgraph, include=FALSE}
+source(file = here::here("R", "streamgraph.R"))
+```
+
+
+
+# snapshot
+
+
+
+```{r create_snapshots, include=FALSE}
+source(file = here::here("R", "create_snapshots.R"))
+```
+
+
+```{r validate_base_snapshots, include=FALSE}
+source(file = here::here("R", "validate_base_snapshots.R"))
+```
+
+
+
+
+```{r validate_pubmed_snapshots, include=FALSE}
+source(file = here::here("R", "validate_pubmed_snapshots.R"))
+```
+
+
+
+
+
+# curl
+
+
+```{r curl_test, include=FALSE}
+source(file = here::here("R", "curl_test.R"))
+```
+
+
+
+
+
+
+# similarity
+
+
+
+
+
+```{r text_similarity, include=FALSE}
+source(file = here::here("R", "text_similarity.R"))
+```
+
+
+
+
+
+
+
+openaire.R
+altmetrics.R
+base.R
+cluster.R
+doaj.R
+features.R
+linkedcat_authorview.R
+linkedcat_browseview.R
+linkedcat.R
+postprocess.R
+preprocess.R
+pubmed.R
+rplos_fast.R
+rplos.R
+run_vis_layout.R
+scaling_clustering.r
+streamgraph.R
+summarize.R
+test
+text_similarity.R
+utils.R
+vis_layout.R
+

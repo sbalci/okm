@@ -1,6 +1,6 @@
-Package: HistopathTemplate
+Package: OpenKnowledgeMapsRCodes
 Type: Package
-Title: Template of R Codes Used in Histopathology Research 
+Title: OpenKnowledgeMaps R Codes 
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Serdar",
@@ -9,14 +9,7 @@ Authors@R:
            email = "drserdarbalci@gmail.com",
            comment = c(ORCID = "0000-0002-7852-3851"))
 Maintainer: Serdar Balci <drserdarbalci@gmail.com>
-Description: This package is a collection of R codes that I use in my research.
-    It will include how to prepare data for statistical analysis.
-    Methods to import and prepare data for analysis.
-    Descriptive statistics.
-    Hypothesis tests.
-    Survival analysis.
-    Regression analysis.
-    Cluster analysis.
+Description: This package is a collection of R codes that I use in OpenKnowledgeMaps
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
