@@ -8,7 +8,8 @@ options(warn = 1)
 # setwd(wd) #Don't forget to set your working directory
 
 # query <- "balci serdar" #args[2]
-query <- readLines(here::here("query/query_PBPath.txt"))
+# query <- readLines(here::here("query/query_PBPath.txt"))
+query <- "pancreas AND stage"
 service <- "pubmed"
 params <- NULL
 params_file <- "json/okm_params_pubmed.json"
@@ -27,7 +28,7 @@ tslog <- getLogger('ts')
 source(here::here("R/vis_layout.R"))
 source(here::here('R/pubmed.R'))
 
-MAX_CLUSTERS = 1000
+MAX_CLUSTERS = 15
 
 if (!is.null(params_file)) {
   params <- fromJSON(here::here(params_file))

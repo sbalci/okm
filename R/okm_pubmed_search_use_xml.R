@@ -8,7 +8,9 @@ options(warn = 1)
 # setwd(wd) #Don't forget to set your working directory
 
 # query <- "balci serdar" #args[2]
-query <- readLines(here::here("query/query_PBPath.txt"))
+# query <- readLines(here::here("query/query_PBPath.txt"))
+xml <- here::here("data/xml/PBPath_pubmed_result.xml")
+
 service <- "pubmed"
 params <- NULL
 params_file <- "json/okm_params_pubmed.json"
@@ -45,23 +47,25 @@ ADDITIONAL_STOP_WORDS = LANGUAGE$name
 #start.time <- Sys.time()
 failed <- list(params = params)
 tryCatch({
-  input_data = get_papers(query, params)
-}, error = function(err) {
-  tslog$error(gsub(
-    "\n",
-    " ",
-    paste(
-      "Query failed",
-      service,
-      query,
-      paste(params, collapse = " "),
-      err,
-      sep = "||"
-    )
-  ))
-  failed$query <<- query
-  failed$query_reason <<- err$message
-})
+  input_data = get_papers(xml = xml, params)
+}
+# , error = function(err) {
+#   tslog$error(gsub(
+#     "\n",
+#     " ",
+#     paste(
+#       "Query failed",
+#       service,
+#       query,
+#       paste(params, collapse = " "),
+#       err,
+#       sep = "||"
+#     )
+#   ))
+#   failed$query <<- query
+#   failed$query_reason <<- err$message
+# }
+)
 
 #end.time <- Sys.time()
 #time.taken <- end.time - start.time
@@ -76,21 +80,23 @@ tryCatch({
     add_stop_words = ADDITIONAL_STOP_WORDS,
     testing = TRUE
   )
-}, error = function(err) {
-  tslog$error(gsub(
-    "\n",
-    " ",
-    paste(
-      "Processing failed",
-      query,
-      paste(params, collapse = " "),
-      err,
-      sep = "||"
-    )
-  ))
-  failed$query <<- query
-  failed$processing_reason <<- err$message
-})
+}
+# , error = function(err) {
+#   tslog$error(gsub(
+#     "\n",
+#     " ",
+#     paste(
+#       "Processing failed",
+#       query,
+#       paste(params, collapse = " "),
+#       err,
+#       sep = "||"
+#     )
+#   ))
+#   failed$query <<- query
+#   failed$processing_reason <<- err$message
+# }
+)
 
 if (!exists('output_json')) {
   output_json <- detect_error(failed)

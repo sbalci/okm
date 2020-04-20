@@ -8,7 +8,8 @@ options(warn = 1)
 # setwd(wd) #Don't forget to set your working directory
 
 # query <- "balci serdar" #args[2]
-query <- readLines(here::here("query_PBPath.txt"))
+# query <- readLines(here::here("query_PBPath.txt"))
+query <- "pancreas stage"
 service <- "pubmed"
 params <- NULL
 params_file <- "R/test/params_pubmed.json"
@@ -27,7 +28,7 @@ tslog <- getLogger('ts')
 source(here::here("R/vis_layout.R"))
 source(here::here('R/pubmed.R'))
 
-MAX_CLUSTERS = 100
+MAX_CLUSTERS = 15
 
 if (!is.null(params_file)) {
   params <- fromJSON(here::here(params_file))
@@ -114,7 +115,7 @@ rio::export(x = output_df,
             file = here::here("out" , paste0(
               as.character(Sys.time()),
               "output_df.xlsx"
-            ), format = "xlsx"))
+            )), format = "xlsx")
 
 readr::write_csv(input_data$metadata, path = here::here("out" , paste0(as.character(Sys.time(
 )),
@@ -124,11 +125,11 @@ rio::export(x = input_data$metadata,
             file = here::here("out" , paste0(
               as.character(Sys.time()),
               "metadata.xlsx"
-            ), format = "xlsx"))
+            )), format = "xlsx")
 
 readr::write_csv(input_data$text, path = here::here("out" , paste0(as.character(Sys.time(
 )), "text.csv")))
 
 rio::export(x = input_data$text,
             file = here::here("out" , paste0(as.character(Sys.time(
-            )), "text.xlsx"), format = "xlsx"))
+            )), "text.xlsx")), format = "xlsx")

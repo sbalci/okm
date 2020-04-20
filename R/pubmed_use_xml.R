@@ -38,7 +38,7 @@ library("xml2")
 plog <- getLogger('api.pubmed')
 
 
-get_papers <- function(query, params = NULL, limit = 100) {
+get_papers <- function(query, xml, params = NULL) {
   plog$info(paste("Search:", query))
   start.time <- Sys.time()
 
@@ -59,15 +59,16 @@ get_papers <- function(query, params = NULL, limit = 100) {
   exclude_articles_with_abstract = " AND hasabstract"
   #HOTFIX - article_types cause a 414 with PubMed
   #query <- paste0(query, article_types_string, exclude_articles_with_abstract)
-  query <- paste0(query, exclude_articles_with_abstract)
-  plog$info(paste("Query:", query))
-  x <- rentrez::entrez_search(db = "pubmed", term = query, retmax = limit,
-                              mindate = from, maxdate = to, sort=sortby, use_history=TRUE)
-  res <- rentrez::entrez_fetch(db = "pubmed", web_history = x$web_history, retmax = limit, rettype = "xml")
+  # query <- paste0(query, exclude_articles_with_abstract)
+  # plog$info(paste("Query:", query))
+  # x <- rentrez::entrez_search(db = "pubmed", term = query, retmax = limit,
+  #                             mindate = from, maxdate = to, sort=sortby, use_history=TRUE)
+  # res <- rentrez::entrez_fetch(db = "pubmed", web_history = x$web_history, retmax = limit, rettype = "xml")
   
-  # XML read here
+  # XML read here ----
   
-  xml <- xml2::xml_children(xml2::read_xml(res))
+  # xml <- xml2::as_xml_document(xml)
+  xml <- xml2::xml_children(xml2::read_xml(xml))
   out <- lapply(xml, function(z) {
     flds <- switch(
       xml2::xml_name(z),

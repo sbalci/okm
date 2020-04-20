@@ -28,27 +28,89 @@ the sequence of the getting input data and creating the map data can be found in
 if you refer to the  workflow of creating map data from input data, that specific workflow is in https://github.com/OpenKnowledgeMaps/Headstart/blob/master/server/preprocessing/other-scripts/vis_layout.R
 
 
+---
+
+# rentrez search
+
+```{r rentrez search}
+source(here::here("R/okm_pubmed_search_rentrez.R"))
+source(here::here("R/pubmed.R"))
+```
+
+
+## helper functions for okm_pubmed_search_rentrez
+
+```{r helper functions for okm_pubmed_search_rentrez}
+source(file = here::here("R/vis_layout.R"))
+source(file = here::here("R/utils.R"))
+```
+
+
+### helper functions for vis_layout
+
+```{r helper functions for vis_layout}
+source(here::here('R/preprocess.R'))
+source(here::here('R/features.R'))
+source(here::here('R/cluster.R'))
+source(here::here('R/summarize.R'))
+source(here::here('R/postprocess.R'))
+```
+
+
+---
+
+
+---
+
+
+# use XML file
+
+```{r use XML file}
+source(here::here("R/okm_pubmed_search_use_xml.R"))
+source(here::here("R/pubmed_use_xml.R"))
+```
+
+
+## helper functions for okm_pubmed_search_use_xml
+
+```{r helper functions for okm_pubmed_search_rentrez}
+source(file = here::here("R/vis_layout.R"))
+source(file = here::here("R/utils.R"))
+```
+
+
+
+### helper functions for vis_layout
+
+```{r helper functions for vis_layout xml}
+source(here::here('R/preprocess.R'))
+source(here::here('R/features.R'))
+source(here::here('R/cluster.R'))
+source(here::here('R/summarize.R'))
+source(here::here('R/postprocess.R'))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# Test 
+
+
 ```{r}
 source("R/test/pubmed-test.R")
 
 ```
 
-
-
-```{r}
-source("R/vis_layout.R")
-
-```
-
-
-
-
-
-
-
-```{r utils, include=FALSE}
-source(file = here::here("R/utils.R"))
-```
 
 
 
