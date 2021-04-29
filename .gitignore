@@ -26,3 +26,5 @@ vignettes/*.pdf
 rsconnect/
 data
 oldRmd
+.Rprofile
+.DS_Store
